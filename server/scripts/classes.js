@@ -120,11 +120,19 @@ const seedClasses = async () => {
       console.log("professor", professor.dataValues.id);
       const teach_grades_array = professor.dataValues.year;
       teach_grades_array.map(async (grade) => {
-        const class_name = await Classes.create({
-          subjectName: professor.subject,
-          professorName: professor.firstName + " " + professor.lastName,
-          year: grade,
-        });
+        const class_name = await Classes.create(
+          {
+            subjectName: professor.subject,
+            professorName: professor.firstName + " " + professor.lastName,
+            year: grade,
+          }
+          // {
+          //   include: {
+          //     model: Students,
+          //     foreignKey: "std",
+          //   },
+          // }
+        );
         // console.log(Object.keys(class_name.__proto__));
         await class_name.setProfessor(professor);
       });
