@@ -35,22 +35,14 @@ const seedWands = async (quantity) => {
   try {
     await Wands.sync({ force: true });
     for (let i = 1; i <= quantity; i++) {
-      const one_wand = await Wands.create(
-        {
-          core: core[Math.floor(Math.random() * 3)],
-          wood: wood[Math.floor(Math.random() * wood.length)],
-          flexibility: flexibility[Math.floor(Math.random() * 3)],
-          length: length[Math.floor(Math.random() * 4)],
-        }
-        // {
-        //   include: {
-        //     model: Students,
-        //     foreignKey: "std",
-        //   },
-        // }
-      );
       const student = await Students.findByPk(i);
-      //   console.log(Object.keys(student.__proto__));
+      const one_wand = await Wands.create({
+        core: core[Math.floor(Math.random() * 3)],
+        wood: wood[Math.floor(Math.random() * wood.length)],
+        flexibility: flexibility[Math.floor(Math.random() * 3)],
+        length: length[Math.floor(Math.random() * 4)],
+      });
+      //   console.log(Object.keys(one_wand.__proto__));
       one_wand.setStudent(student);
       //   student.setWand(one_wand);
     }

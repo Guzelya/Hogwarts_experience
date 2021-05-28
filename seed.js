@@ -27,13 +27,13 @@ Professors.hasMany(Classes);
 Classes.belongsTo(Professors);
 
 Students.hasOne(Wands);
-Wands.belongsTo(Students, { foreignKey: "std" });
+Wands.belongsTo(Students);
 
 const seed = async () => {
   try {
     // await Professors.sync({ force: true });
     // await seedProfessors();
-    // await Wands.sync({ force: true });
+    await Wands.sync({ force: true });
     await seedWands(20);
     await seedClasses();
     await seedStudentClasses();
