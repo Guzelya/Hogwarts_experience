@@ -1,43 +1,19 @@
-const faker = require("faker");
 const { db } = require("./server/db/db");
-const { Students } = require("./server/db/models");
-const { Classes } = require("./server/db/models");
-
+// don't forget to add models, they include all of the associations
+// otherwise you won't be able to seed the database
 const models = require("./server/db/models");
-const { Student_Classes } = require("./server/db/models");
-const { seedStudentClasses } = require("./server/scripts/student_classes.js");
-// const { Professors } = require("./server/db/models/professors.js");
-// const { seedProfessors } = require("./server/scripts/professors.js");
-const { seedClasses } = require("./server/scripts/classes.js");
-// const { Wands } = require("./server/db/models/wands.js");
-// const { seedWands } = require("./server/scripts/wands");
-
-// Students.belongsToMany(Classes, {
-//   through: Student_Classes,
-//   // uniqueKey: "my_custom_unique",
-// });
-// Classes.belongsToMany(Students, {
-//   through: Student_Classes,
-//   // uniqueKey: "my_custom_unique",
-// });
-
-// // hasMany association will insert foreign key to Classes tables(target)
-// Professors.hasMany(Classes);
-// // belongsTo association will insert foreign key to Classes(source)
-// Classes.belongsTo(Professors);
-
-// Students.hasOne(Wands);
-// Wands.belongsTo(Students);
+const { seedStudentClasses } = require("./server/scripts/student_classes");
+const { seedProfessors } = require("./server/scripts/professors");
+const { seedClasses } = require("./server/scripts/classes");
+const { seedWands } = require("./server/scripts/wands");
 
 const seed = async () => {
   try {
     await db.sync({ force: true });
-    // await Professors.sync({ force: true });
-    // await seedProfessors();
-    // await seedClasses();
-    // await seedStudentClasses();
-    // await Wands.sync({ force: true });
-    // await seedWands(20);
+    await seedProfessors();
+    await seedClasses();
+    await seedStudentClasses();
+    await seedWands(20);
     console.log("seeding success");
     await db.close();
   } catch (err) {

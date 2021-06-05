@@ -1,10 +1,7 @@
-const faker = require("faker");
-const db = require("../db/db.js");
 const { Student_Classes } = require("../db/models/student_classes");
 const { Students } = require("../db/models/students");
 const { Classes } = require("../db/models/classes");
 const { createStudents } = require("./students");
-const { seedClasses } = require("./classes");
 
 const grades = [
   "A+",
