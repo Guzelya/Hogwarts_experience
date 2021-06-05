@@ -1,5 +1,4 @@
 const faker = require("faker");
-const db = require("../db/db.js");
 const { Students } = require("../db/models/students");
 // spelling of houses should be the same as it is in model Students
 const house = [

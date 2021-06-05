@@ -1,5 +1,3 @@
-const faker = require("faker");
-const db = require("../db/db.js");
 const { Wands } = require("../db/models/wands");
 const { Students } = require("../db/models/students");
 
@@ -42,8 +40,7 @@ const seedWands = async (quantity) => {
         flexibility: flexibility[Math.floor(Math.random() * 3)],
         length: length[Math.floor(Math.random() * 4)],
       });
-      console.log(Object.keys(student.__proto__));
-      // one_wand.setStudent(student);
+      // console.log(Object.keys(student.__proto__));
       await student.setWand(one_wand);
     }
   } catch (err) {

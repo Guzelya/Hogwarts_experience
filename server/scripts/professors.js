@@ -1,5 +1,4 @@
 const faker = require("faker");
-const db = require("../db/db.js");
 const { Professors } = require("../db/models/professors");
 const { Classes } = require("../db/models/classes");
 
