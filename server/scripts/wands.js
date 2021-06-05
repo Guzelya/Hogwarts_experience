@@ -42,9 +42,9 @@ const seedWands = async (quantity) => {
         flexibility: flexibility[Math.floor(Math.random() * 3)],
         length: length[Math.floor(Math.random() * 4)],
       });
-      //   console.log(Object.keys(one_wand.__proto__));
-      one_wand.setStudent(student);
-      //   student.setWand(one_wand);
+      console.log(Object.keys(student.__proto__));
+      // one_wand.setStudent(student);
+      await student.setWand(one_wand);
     }
   } catch (err) {
     console.log("did not seed wands", err);
