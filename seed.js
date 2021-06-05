@@ -33,10 +33,10 @@ const seed = async () => {
   try {
     // await Professors.sync({ force: true });
     // await seedProfessors();
-    await Wands.sync({ force: true });
-    await seedWands(20);
     await seedClasses();
     await seedStudentClasses();
+    await Wands.sync({ force: true });
+    await seedWands(20);
     console.log("seeding success");
   } catch (err) {
     console.log("seeding failed", err);
